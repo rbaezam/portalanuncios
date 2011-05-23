@@ -16,6 +16,10 @@ gem 'jquery-rails'
 
 gem 'therubyracer'
 
+group :production do
+  gem 'therubyracer-heroku', '0.8.1.pre3'
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -28,4 +32,8 @@ gem 'therubyracer'
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_girl'
+  gem 'webrat'
 end

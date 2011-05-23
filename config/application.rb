@@ -37,6 +37,11 @@ module Portalanuncios
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(prototype prototype_ujs)
 
+    config.generators do |g|
+        g.test_framework :rspec, :fixture => true, :views => false
+        g.fixture_replacement :factory_girl, :dir => "spec/factories"
+    end
+
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
