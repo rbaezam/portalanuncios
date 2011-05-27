@@ -1,4 +1,30 @@
 Portalanuncios::Application.routes.draw do
+
+  root :to => "sitio#index"
+
+  match 'portal_empresas' => "portal_empresas#index", :as => "portal_empresas"
+
+  match '/registrarse' => 'usuarios#new', :as => 'registrarse'
+  match '/iniciar_sesion' => 'sesiones#new', :as => 'iniciar_sesion'
+  match '/cerrar_sesion' => 'sesiones#destroy', :as => 'cerrar_sesion'
+
+  match '/empresas/portal' => 'portal_empresas#index', :as => 'portal_empresas'
+  match '/usuarios/usuario_incorrecto' => 'usuarios#usuario_incorrecto', :as => 'usuario_incorrecto'
+
+  # Rutas AJAX
+  match '/ciudades/obtener_por_estado' => 'ciudades#obtener_por_estado', :as => 'obtener_ciudades_por_estado'
+  match '/subcategorias/obtener_por_categoria' => 'subcategorias#obtener_por_categoria', :as => 'obtener_subcategorias_por_categoria'
+
+  resources :anuncios
+  resources :usuarios do
+    member do
+      get 'cambiar_password'
+      post 'realizar_cambio_password'
+    end
+  end
+  resources :empresas
+  resources :sesiones
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

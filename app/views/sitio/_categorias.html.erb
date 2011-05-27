@@ -1,0 +1,9 @@
+<h3>Explorar por categorías</h3>
+
+<ul>
+  <% @categorias.each do |categoria| %>
+  <li>
+    <%= link_to categoria.nombre, anuncios_path(:categoria_id => categoria.id) %>
+  </li>
+  <% end %>
+</ul>

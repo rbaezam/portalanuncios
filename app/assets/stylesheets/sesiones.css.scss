@@ -1,0 +1,37 @@
+/* 
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+  You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+div#iniciar_sesion {
+
+  width: 322px;
+  margin: 0px auto;
+
+  h1 {
+    background-color: #126;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0px;
+    padding: 5px;
+  }
+  
+  .formulario {
+    width: 300px;
+    border: 1px solid black;
+    margin: 0px auto;
+    padding: 10px;
+
+    label {
+      width: 120px;
+      float: left;
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    p.boton {
+      float: right;
+      margin: 0px 10px 0px 0px;
+    }
+  }
+}

@@ -1,0 +1,168 @@
+/* 
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+  You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+#criterios_busqueda {
+  float: left;
+  width: 200px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  background-color: #acf;
+
+  ul {
+    list-style-type: none;
+    margin-left: -35px;
+  }
+
+  .campo_criterio {
+    margin-bottom: 10px;
+  }
+
+  input {
+    display: block;
+    width: 180px;
+  }
+
+  input[type=submit] {
+    width: 100px;
+    float: right;
+    margin-right: 20px;
+    font-size: 1.3em;
+  }
+
+  select {
+    display: block;
+    width: 184px;
+  }
+}
+
+#lista_anuncios {
+
+  float: left;
+  width: 850px;
+  margin-left: 10px;
+
+  ul {
+    list-style-type: none;
+    margin-left: -35px;
+  }
+
+  .anuncio {
+    h3 {
+      margin-top: 0px;
+    }
+
+    dt {
+      float: left;
+      margin-right: 10px;
+      padding: 2px;
+      width: 120px;
+      text-align: right;
+      font-weight: bold;
+    }
+
+    dd {
+      margin: 2px 0;
+      padding: 2px 0;
+      text-align: justify;
+      text-indent: 0px;
+
+      p {
+        vertical-align: top;
+        border: 1px solid black;
+      }
+    }
+  }
+
+  .navegacion {
+    border: 1px solid #3654a9;
+    background-color: #254398;
+    font-size: 0.9em;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+    width: 850px;
+
+    a {
+      color: #fff;
+    }
+
+    .total_anuncios {
+      width: 33%;
+      float: left;
+    }
+
+    .notificarme_similares {
+      width: 33%;
+      float: left;
+    }
+
+    .paginacion {
+      width: 33%;
+      float: left;
+    }
+  }
+}
+
+div.anuncio {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px;
+
+  dl {
+
+    dt {
+      clear: both;
+      float: left;
+      width: 100px;
+    }
+  }
+}
+
+#anuncio_detalles {
+
+  .titulo {
+    margin: 0px;
+    text-align: center;
+    padding: 0px;
+  }
+
+  .datos {
+    border: 1px solid #ccc;
+    float: left;
+    padding: 10px;
+    width: 280px;
+    margin: 5px;
+
+    dt {
+      font-weight: bold;
+    }
+  }
+
+  .descripcion {
+    border: 1px solid #ccc;
+    float: left;
+    padding: 10px;
+    width: 730px;
+    margin: 5px;
+  }
+}
+
+#form_publicar_vacante {
+  width: 850px;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  margin: 0px auto;
+
+  label {
+    width: 120px;
+    float: left;
+    text-align: right;
+    margin-right: 3px;
+  }
+
+  select {
+    width: 370px;
+  }
+}

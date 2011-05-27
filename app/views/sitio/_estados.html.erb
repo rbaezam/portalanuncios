@@ -1,0 +1,8 @@
+<h3>Explorar por estado</h3>
+<ul>
+  <% @estados.each do |estado| %>
+  <li>
+    <%= link_to estado.nombre, anuncios_path(:estado_id => estado.id) %>
+  </li>
+  <% end %>
+</ul>

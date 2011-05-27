@@ -1,0 +1,10 @@
+<h3>Anuncios destacados</h3>
+<ul>
+  <% @destacados.each do |anuncio| %>
+  <li>
+    <strong><%= link_to anuncio.titulo, anuncio %></strong><br/>
+    <span><%= localidad_de anuncio %></span><br/>
+    <span><%= sueldo_de anuncio %></span>
+  </li>
+  <% end %>
+</ul>

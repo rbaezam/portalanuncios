@@ -1,0 +1,8 @@
+<h3>Explorar por empresas</h3>
+<ul>
+  <% @empresas.each do |empresa| %>
+  <li>
+    <%= link_to empresa.nombre, anuncios_path(:empresa_id => empresa.id) %>
+  </li>
+  <% end %>
+</ul>

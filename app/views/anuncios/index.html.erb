@@ -1,0 +1,178 @@
+<h1>Listado de anuncios</h1>
+
+<% if @mostrando_todos %>
+  <h3>Mostrando todos los anuncios</h3>
+<% end %>
+
+<div id="criterios_busqueda">
+  <%= form_tag anuncios_path, :method => :get do %>
+  <h3>Criterios de búsqueda</h3>
+    <ul>
+      <li>
+        <div class="campo_criterio">
+          <%= label_tag :texto, "Texto: " %>
+          <%= text_field_tag :texto, @texto %>
+        </div>
+      </li>
+
+      <li>
+        <div class="campo_criterio">
+          <%= label_tag :localidad, "Localidad: " %>
+          <%= text_field_tag :localidad, @localidad_nombre %>
+        </div>
+      </li>
+
+      <li>
+        <div class="campo_criterio">
+          <%= label_tag :categoria_id, "Categoría: " %>
+          <select id="categoria_id" name="categoria_id[]" multiple="multiple">
+            <% selected = false %>
+            <% @categorias.each do |categoria| %>
+              <% @categorias_seleccionadas.each do |cat_sel| %>
+                <% if categoria.id.to_s == cat_sel %>
+                  <% selected = true %>
+                  <% break %>
+                <% else %>
+                  <% selected = false %>
+                <% end %>
+              <% end %>
+              <option value="<%= categoria.id %>" <%= "selected='selected'" unless selected == false %> ><%= categoria.nombre %></option>
+            <% end %>
+          </select>
+        </div>
+      </li>
+
+      <li>
+        <div class="campo_criterio">
+          <%= label_tag :tipos_trabajos_id, "Tipos de trabajos: " %>
+          <select id="tipos_trabajos_id" name="tipos_trabajos_id[]" multiple="multiple">
+            <% selected = false %>
+            <% @tipos_trabajos.each do |tipo| %>
+              <% @tipos_trabajos_seleccionados.each do |sel| %>
+                <%= "t:%d" % tipo.id %>
+                <%= "s:%s" % sel %>
+                <% if tipo.id.to_s == sel %>
+                  <% selected = true %>
+                  <% break %>
+                <% else %>
+                  <% selected = false %>
+                <% end %>
+              <% end %>
+              <option value="<%= tipo.id %>" <%= "selected='selected'" unless selected == false %> ><%= tipo.nombre %></option>
+            <% end %>
+          </select>
+        </div>
+      </li>
+
+      <li>
+        <div class="campo_criterio">
+          <%= label_tag :antiguedad_id, "Antiguedad: " %>
+          <select id="antiguedad_id" name="antiguedad_id">
+            <%= options_from_collection_for_select @antiguedades, :id, :nombre, params[:antiguedad_id] %>
+          </select>
+        </div>
+      </li>
+
+      <li>
+        <div class="campo_criterio">
+          <%= label_tag :sueldo_minimo, "Sueldo mínimo: " %>
+          <%= text_field_tag :sueldo_minimo, @sueldo_minimo %>
+          <select id="periodicidad_id" name="periodicidad_id">
+            <%= options_from_collection_for_select @periodicidades, :id, :nombre, params[:periodicidad_id] %>
+          </select>
+        </div>
+      </li>
+
+      <li>
+        <div class="campo_criterio">
+          <%= submit_tag "Buscar" %>
+        </div>
+      </li>
+
+    </ul>
+  <% end %>
+</div>
+
+<div id="lista_anuncios">
+
+  <div class="navegacion">
+    <div class="total_anuncios">
+      <%= @total_resultados %> anuncio(s) encontrado(s) (<%= @num_paginas %> páginas)
+    </div>
+    <div class="notificarme_similares">
+      <a href="#">
+        Notificarme de anuncios similares
+      </a>
+    </div>
+    <div class="paginacion">
+      <% (1..@num_paginas).each do |pagina| %>
+        <% if pagina == @pagina_actual %>
+          <%= pagina %>
+        <% else %>
+          <%= link_to pagina, anuncios_path(@query_string, :pagina=>pagina) %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="cb"></div>
+  </div>
+
+  <% if not @anuncios.nil? %>
+  <ul>
+    <% @anuncios.each do |anuncio| %>
+    <li>
+      <div class="anuncio">
+        <h3>
+          <%= link_to anuncio.titulo, anuncio_path(anuncio.id) %>
+        </h3>
+        <dl>
+          <% if not anuncio.empresa.nil? %>
+            <dt>Empresa:</dt>
+            <dd><%= anuncio.empresa.nombre unless anuncio.empresa.nil? %></dd>
+          <% end %>
+
+          <% if not anuncio.subcategoria.nil? %>
+            <dt>Categoría:</dt>
+            <dd>
+              <% if not anuncio.subcategoria.nil? %>
+                <%= anuncio.subcategoria.categoria.nombre unless anuncio.subcategoria.categoria.nil? %> - <%= anuncio.subcategoria.nombre %>
+              <% end %>
+            </dd>
+          <% end %>
+
+          <% if not anuncio.puesto.nil? %>
+            <dt>Puesto:</dt>
+            <dd><%= anuncio.puesto %></dd>
+          <% end %>
+
+          <% if anuncio.sueldo_minimo > 0 and anuncio.sueldo_maximo > 0 %>
+            <dt>Sueldo:</dt>
+            <dd><%= sueldo_de anuncio %></dd>
+          <% end %>
+
+          <% if not anuncio.ciudad.nil? %>
+            <dt>Localidad:</dt>
+            <dd>
+              <% if not anuncio.ciudad.nil? %>
+                <%= anuncio.ciudad.nombre unless anuncio.ciudad.nil? %>, <%= anuncio.ciudad.estado.nombre unless anuncio.ciudad.nil? or anuncio.ciudad.estado.nil? %>
+              <% else %>
+                No asignado
+              <% end %>
+            </dd>
+          <% end %>
+
+          <% if not anuncio.descripcion.nil? %>
+            <dt>Descripción:</dt>
+            <dd>
+              <%= strip_tags(raw(truncate(anuncio.descripcion, :length => 300, :omission => '...(continúa)'))) %>
+            </dd>
+          <% end %>
+          
+        </dl>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
+
+<div class="cb"></div>

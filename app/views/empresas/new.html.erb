@@ -1,0 +1,125 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      // Manejar el evento del select de ESTADO
+      $("#estado_id").change(function() {
+        var estadoId = $("#estado_id").val();
+        var selectCiudad = $("#ciudad_id");
+        var url = "<%= url_for(:action => 'obtener_por_estado', :controller => 'ciudades') %>";
+        $.get(url, {estado_id:estadoId}, function(datos) {
+          if(datos.length>0) {
+            selectCiudad.empty().append("<option value='0'>--Seleccione una opción--</option>");
+            selectCiudad.removeAttr('disabled');
+            for(i=0; i<datos.length; i++) {
+              selectCiudad.append("<option value='" + datos[i].id + "'>" + datos[i].nombre + "</option>");
+            }
+          } else {
+            selectCiudad.attr('disabled',true);
+          }
+        });
+      });
+    });
+  </script>
+<% end %>
+
+<div id="agregar_empresa">
+  <h1>Agregar empresa</h1>
+
+  <%= form_for @empresa do |f| %>
+
+    <fieldset>
+
+      <legend>Datos generales</legend>
+
+      <p>
+        <%= f.label :nombre, "Nombre: " %>
+        <%= f.text_field :nombre %>
+      </p>
+
+      <p>
+        <%= f.label :rfc, "RFC: " %>
+        <%= f.text_field :rfc %>
+      </p>
+
+      <p>
+        <%= f.label :descripcion, "Descripción: " %>
+        <%= f.text_field :descripcion %>
+      </p>
+
+      <p>
+        <%= f.label :telefono, "Teléfono: " %>
+        <%= f.text_field :telefono %>
+      </p>
+
+      <p>
+        <%= f.label :fax, "Fax: " %>
+        <%= f.text_field :fax %>
+      </p>
+
+      <p>
+        <%= f.label :pagina_web, "Página Web: " %>
+        <%= f.text_field :pagina_web %>
+      </p>
+
+      <p>
+        <%= f.label :industria_id, "Industria: " %>
+        <%= f.collection_select :industria_id, @industrias, :id, :nombre, {:include_blank => '--Seleccione una industria--'} %>
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Dirección</legend>
+
+      <p>
+        <%= label_tag :estado_id, "Estado: " %>
+        <%= select_tag :estado_id, options_from_collection_for_select(@estados, :id, :nombre), {:prompt => 'Seleccione'} %>
+      </p>
+
+      <p>
+        <%= label_tag :ciudad_id, "Ciudad: " %>
+        <select id="ciudad_id" name="ciudad_id" disabled="disabled">
+          <option value="0">--Seleccione una opción--</option>
+        </select>
+      </p>
+
+      <p>
+        <%= label_tag :municipio, "Municipio: " %>
+        <%= text_field_tag :municipio %>
+      </p>
+
+      <p>
+        <%= label_tag :calle, "Calle: " %>
+        <%= text_field_tag :calle %>
+      </p>
+
+      <p>
+        <%= label_tag :numero_interior, "Número interior: " %>
+        <%= text_field_tag :numero_interior %>
+      </p>
+
+      <p>
+        <%= label_tag :numero_exterior, "Número exterior: " %>
+        <%= text_field_tag :numero_exterior %>
+      </p>
+
+      <p>
+        <%= label_tag :colonia, "Colonia: " %>
+        <%= text_field_tag :colonia %>
+      </p>
+
+      <p>
+        <%= label_tag :codigo_postal, "Código postal: " %>
+        <%= text_field_tag :codigo_postal %>
+      </p>
+
+    </fieldset>
+
+    <p class="boton">
+      <%= f.submit "Agregar" %>
+    </p>
+
+    <div class="cb"></div>
+
+  <% end %>
+</div>

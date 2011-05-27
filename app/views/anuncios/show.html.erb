@@ -1,0 +1,60 @@
+<div id="anuncio_detalles">
+
+  <div class="titulo">
+    <h1><%= @anuncio.titulo %></h1>
+  </div>
+
+  <div class="datos">
+    <dl>
+
+      <% if not @anuncio.empresa.nil? %>
+        <dt>Empresa:</dt>
+        <dd><%= @anuncio.empresa.nombre unless @anuncio.empresa.nil? %></dd>
+      <% end %>
+
+      <% if not @anuncio.subcategoria.nil? and not @anuncio.subcategoria.categoria.nil? %>
+        <dt>Categoría:</dt>
+        <dd>
+          <%= @anuncio.subcategoria.categoria.nombre %>
+          -
+          <%= @anuncio.subcategoria.nombre %>
+        </dd>
+      <% end %>
+
+      <% if not @anuncio.puesto.nil? %>
+        <dt>Puesto:</dt>
+        <dd><%= @anuncio.puesto %></dd>
+      <% end %>
+
+      <% if @anuncio.sueldo_minimo > 0 and @anuncio.sueldo_maximo > 0 %>
+        <dt>Sueldo:</dt>
+        <dd><%= sueldo_de @anuncio %></dd>
+      <% end %>
+
+      <% if not @anuncio.tipos_trabajos_anuncio.nil? %>
+        <dt>Tipo de empleo:</dt>
+        <dd>
+          <ul>
+            <% @anuncio.tipos_trabajos_anuncio.each do |tipo| %>
+            <li>
+              <%= tipo.tipo_trabajo.nombre %>
+            </li>
+            <% end %>
+          </ul>
+        </dd>
+      <% end %>
+
+      <% if not @anuncio.ciudad.nil? and not @anuncio.ciudad.estado.nil? %>
+        <dt>Localidad:</dt>
+        <dd><%= @anuncio.ciudad.nombre %>, <%= @anuncio.ciudad.estado.nombre %></dd>
+      <% end %>
+      
+    </dl>
+  </div>
+
+  <div class="descripcion">
+    <%= raw(@anuncio.descripcion) %>
+  </div>
+
+  <div class="cb"></div>
+</div>

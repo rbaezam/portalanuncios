@@ -1,0 +1,70 @@
+/* 
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+  You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+
+div#portal_empresas {
+	
+  .mensajes {
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .datos_usuario {
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+    width: 250px;
+    float: left;
+  }
+
+  .empresas {
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+    width: 785px;
+    float: left;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th {
+        padding: 0px;
+        border: 1px solid black;
+        margin: 0px;
+        height: 20px;
+      }
+
+      td {
+        padding: 5px;
+        border: 1px solid black;
+      }
+    }
+  }
+
+  .anuncios {
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th {
+        padding: 0px;
+        border: 1px solid black;
+        margin: 0px;
+        height: 20px;
+      }
+
+      td {
+        border: 1px solid black;
+        padding: 5px;
+      }
+    }
+  }
+}

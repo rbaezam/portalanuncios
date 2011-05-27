@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Portalanuncios</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>Portalanuncios</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= yield :head %>
+  </head>
+  <body>
+    <div id="pagina">
+      <div id="navegacion">
+        <%= render "globales/navegacion" %>
+      </div>
+      <div class="cb"></div>
+      <div id="contenido">
+        <%= yield %>
+      </div>
+      <div id="pie_pagina">
+        <%= render "globales/pie_pagina" %>
+      </div>
+    </div>
+  </body>
 </html>

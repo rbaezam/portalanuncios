@@ -1,0 +1,26 @@
+/* 
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+  You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+
+div#explorar_anuncios {
+
+  width: 1000px;
+  margin: 0px auto;
+  
+  .por_categorias {
+    width: 300px;
+    float: left;
+  }
+
+  .por_estados {
+    width: 300px;
+    float: left;
+  }
+
+  .por_empresas {
+    width: 300px;
+    float: left;
+  }
+}

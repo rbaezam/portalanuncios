@@ -1,0 +1,71 @@
+
+html {
+  font-family: Tahoma, Verdana;
+  font-size: 0.80em;
+}
+
+div.cb {
+  clear: both;
+}
+
+#navegacion {
+    border: 1px solid gray;
+    height: 130px;
+    border-collapse: collapse;
+
+    #logo {
+        float: left;
+        vertical-align: baseline;
+        margin-right: 100px;
+    }
+
+    .opciones {
+        float: left;
+
+        h4 {
+          margin: 0px;
+        }
+
+        ul {
+            list-style-type: none;
+            font-size: 14px;
+
+            li {
+                display: inline;
+                margin-left: 5px;
+                margin-top: 0px;
+            }
+        }
+
+        .personas {
+            float: left;
+        }
+
+        .empresas {
+        }
+    }
+}
+
+#pagina {
+    width: 1100px;
+    margin: 0px auto;
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+
+#contenido {
+  padding: 10px;
+}
+
+#pie_pagina {
+    text-align: center;
+
+    ul {
+        list-style-type: none;
+
+        li {
+            display: inline;
+            margin-left: 10px;
+        }
+    }
+}

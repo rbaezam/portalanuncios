@@ -1,0 +1,87 @@
+<div id="portal_empresas">
+
+  <h1>Portal de empresas</h1>
+
+  <% if not flash[:notice].nil? %>
+    <div class="mensajes">
+      <p>
+        <% if not flash[:notice].nil? %>
+          <%= flash[:notice] %>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+
+  <div class="datos_usuario">
+    <h3>Datos del usuario</h3>
+    <p>
+      Nombre: <%= @usuario.nombre_completo %>
+    </p>
+    <p>
+      Correo: <%= @usuario.correo %>
+    </p>
+    <p>
+      <%= link_to 'Modificar datos', edit_usuario_path(@usuario) %>
+    </p>
+    <p>
+      <%= link_to 'Cambiar contraseña', cambiar_password_usuario_path(@usuario) %>
+    </p>
+  </div>
+
+  <div class="empresas">
+    <h3>Empresas</h3>
+    <%= link_to 'Agregar empresa', new_empresa_path %>
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>RFC</th>
+        <th>Acciones</th>
+      </tr>
+      <% @empresas.each do |empresa| %>
+      <tr>
+        <td>
+          <%= empresa.nombre %>
+        </td>
+        <td>
+          <%= empresa.rfc %>
+        </td>
+        <td>
+          <%= link_to 'Editar', edit_empresa_path(empresa) %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="cb"></div>
+
+  <div class="anuncios">
+    <h3>Anuncios</h3>
+    <%= link_to 'Publicar anuncio', new_anuncio_path %>
+    <table>
+      <tr>
+        <th>Título</th>
+        <th>Fecha de publicación</th>
+        <th>Empresa</th>
+        <th>Acciones</th>
+      </tr>
+      <% @anuncios.each do |anuncio| %>
+      <tr>
+        <td>
+          <%= anuncio.titulo %>
+        </td>
+        <td>
+          <%= anuncio.created_at.strftime("%d/%m/%Y") %>
+        </td>
+        <td>
+          <%= anuncio.empresa.nombre %>
+        </td>
+        <td>
+          <%= link_to 'Editar', edit_anuncio_path(anuncio) %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+</div>

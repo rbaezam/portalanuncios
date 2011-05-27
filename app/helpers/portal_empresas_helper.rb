@@ -1,0 +1,2 @@
+module PortalEmpresasHelper
+end

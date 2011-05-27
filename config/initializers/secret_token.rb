@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Portalanuncios::Application.config.secret_token = 'b257be2ed3b7791049e57256d05e0782e1d98a13b511cf59623f908fdb607f85724fed5c50a6b39cbde7a9a5db9c9691fcbafb850e8a39cd1822c846a22c8761'
+Portalanuncios::Application.config.secret_token = '08c90427708dbfa22f7c5af264f65630ce16b2cbf4c5bcf86dcbdd4b33d5f3b82067b23404079a74b2d971708de7ceb1928b648302a23d3b169177e04f9cd89b'

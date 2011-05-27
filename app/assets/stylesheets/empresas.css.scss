@@ -1,0 +1,35 @@
+/* 
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+  You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+
+div#agregar_empresa {
+
+  width: 520px;
+  margin: 0px auto;
+
+  h1 {
+    text-align: center;
+  }
+  
+  fieldset {
+    width: 500px;
+
+    legend {
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+  }
+
+  label {
+    width: 150px;
+    float: left;
+    text-align: right;
+    margin-right: 10px;
+  }
+
+  p.boton {
+    float: right;
+  }
+}

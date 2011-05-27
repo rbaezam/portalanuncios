@@ -11,13 +11,18 @@ gem 'sqlite3'
 gem 'sass'
 gem 'coffee-script'
 gem 'uglifier'
+gem 'seed-fu', '2.0.1.rails31'
+gem 'bcrypt-ruby'
 
 gem 'jquery-rails'
 
 gem 'therubyracer'
+gem 'rails3-generators'
+
+gem "will_paginate", "~> 3.0.pre2"
 
 group :production do
-  gem 'therubyracer-heroku', '0.8.1.pre3'
+  #gem 'therubyracer-heroku'
 end
 
 # Use unicorn as the web server
@@ -35,5 +40,6 @@ group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'webrat'
 end

@@ -1,0 +1,35 @@
+/* 
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+  You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+
+div#cambiar_password {
+  width: 400px;
+  margin: 0px auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+
+  label {
+    width: 220px;
+    float: left;
+  }
+
+  input {
+    width: 170px;
+  }
+
+  input[type=submit] {
+    width: 100px;
+  }
+
+  h1 {
+    text-align: center;
+    margin: 5px;
+  }
+
+  p.boton {
+    float: right;
+    margin: 0px 5px 0px 0px;
+  }
+}

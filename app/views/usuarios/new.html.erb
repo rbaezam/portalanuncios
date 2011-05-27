@@ -1,0 +1,58 @@
+<div id="registrar_usuario">
+
+  <h1>Registrar usuario</h1>
+
+  <div class="formulario">
+
+    <%= form_for @usuario do |f| %>
+
+      <% if @usuario.errors.any? %>
+        <div class="mensajes_error">
+          <h2>Hay errores en el formulario</h2>
+          <ul>
+            <% for mensaje in @usuario.errors.full_messages %>
+              <li><%= mensaje %>
+            <% end %>
+        </div>
+      <% end %>
+
+      <p>
+        <%= f.label :nombre, "Nombre:" %>
+        <%= f.text_field :nombre %>
+      </p>
+
+      <p>
+        <%= f.label :apellido, "Apellido:" %>
+        <%= f.text_field :apellido %>
+      </p>
+
+      <p>
+        <%= f.label :correo, "Correo:" %>
+        <%= f.text_field :correo %>
+      </p>
+
+      <p>
+        <%= f.label :password, "Contraseña:" %>
+        <%= f.password_field :password %>
+      </p>
+
+      <p>
+        <%= f.label :password_confirmation, "Confirmar contraseña:" %>
+        <%= f.password_field :password_confirmation %>
+      </p>
+
+      <p>
+        <%= f.label :tipo_usuario_id, "Tipo de usuario:" %>
+        <%= f.collection_select :tipo_usuario_id, @tipos_usuario, :id, :nombre, :include_blank => "--Seleccione el tipo de usuario--" %>
+      </p>
+
+      <p class="boton">
+        <%= f.submit "Registrarse" %>
+      </p>
+
+    <% end %>
+
+
+  </div>
+
+</div>

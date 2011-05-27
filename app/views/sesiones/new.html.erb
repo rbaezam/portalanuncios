@@ -1,0 +1,33 @@
+<div id="iniciar_sesion">
+  <h1>Iniciar sesión</h1>
+
+  <div class="formulario">
+    <%= form_tag sesiones_path do %>
+
+      <p>
+        <% if not flash.now[:error].nil? %>
+          <%= flash.now[:error] %>
+        <% end %>
+      </p>
+
+      <p>
+        <%= label_tag :correo, "Correo:" %>
+        <%= text_field_tag :correo, params[:correo], {:placeholder => 'Escriba su correo'} %>
+      </p>
+
+      <p>
+        <%= label_tag :password, "Contraseña:" %>
+        <%= password_field_tag :password, '', {:placeholder => 'Escriba su contraseña'} %>
+      </p>
+
+      <p class="boton">
+        <%= submit_tag "Iniciar sesión" %>
+      </p>
+      <div class="cb"></div>
+
+    <% end %>
+  </div>
+
+</div>
+
+eskilianit@hot

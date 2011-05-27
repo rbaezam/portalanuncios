@@ -1,0 +1,36 @@
+<div id="logo">
+  <h3>Portal empleos</h3>
+</div>
+
+<div class="opciones">
+  <div class="personas">
+    <h4>Personas</h4>
+    <ul>
+      <li><%= link_to "Inicio", root_path %></li>
+      <li><%= link_to "Búsqueda avanzada", anuncios_path %></li>
+      <li>Subir mi C.V.</li>
+      <li>Mi cuenta</li>
+      <li>
+        <% if usuario_actual -%>
+          <%= usuario_actual.correo %>.
+          <%= link_to 'Cerrar sesión', cerrar_sesion_path %>
+        <% else %>
+          <%= link_to 'Registrarse', registrarse_path %> o
+          <%= link_to 'Iniciar sesión', iniciar_sesion_path %>
+        <% end -%>
+      </li>
+    </ul>
+  </div>
+
+  <div class="empresas">
+    <h4>Empresas</h4>
+    <ul>
+      <li><%= link_to "Inicio", root_path %></li>
+      <li>Buscar candidatos</li>
+      <li><%= link_to "Publicar vacante", new_anuncio_path %></li>
+      <li>Iniciar sesión</li>
+      <li><%= link_to "Portal de empresas", portal_empresas_path %></li>
+    </ul>
+  </div>
+</div>
+
